@@ -1,54 +1,29 @@
 package com.bridgelabz;
+import java.util.Arrays;
 
-import java.util.Scanner;
+public class MaxNumber<E extends Comparable<E>> {
+    E[] elements;
 
-public class MaxNumber<E extends Comparable> {
-    E x, y, z;
-
-    public MaxNumber(E x, E y, E z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public void findMax(E[] elements) {
+        this.elements = elements;
     }
 
-    public static <T extends Comparable> T comparesion(T x, T y, T z) {
-        T max = x;
-        if (y.compareTo(max) > 0) {
-            max = y;
-        }
-        if (z.compareTo(max) > 0) {
-            max = z;
-        }
+    public static <T> T comparable(T[] elements) {
+        Arrays.sort(elements);
+        int length = elements.length;
+        T max = elements[length - 1];
         return max;
     }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        //float value from user
-        System.out.println("enter the float value:");
-        Float firstNumber = scanner.nextFloat();
-        Float secondNumber = scanner.nextFloat();
-        Float thirdNumber = scanner.nextFloat();
+        Integer[] maxInt = { 1,12,123,1234,12345};
+        System.out.println("Maximum integer value is: " + comparable(maxInt));
 
-        Float maxNumber = comparesion(firstNumber, secondNumber, thirdNumber);
-        System.out.println("Maximum value is:" + maxNumber);
-        System.out.println(" ");
-        //integer value form user
-        System.out.println("enter the integer value:");
-        Integer firstNumbers = scanner.nextInt();
-        Integer secondNumbers = scanner.nextInt();
-        Integer thirdNumbers = scanner.nextInt();
+        Double[] maxDouble = {1.2,1.23,12.3,123.123,0.123 };
+        System.out.println("Maximum double value is: " + comparable(maxDouble));
 
-        Integer maxNumbers = comparesion(firstNumbers, secondNumbers, thirdNumbers);
-        System.out.println("Maximum value is: " + maxNumbers);
-        System.out.println(" ");
-        //string value from user
-        System.out.println("enter the String:");
-        String firstString = scanner.next();
-        String secondString = scanner.next();
-        String thirdString = scanner.next();
+        String[] maxString = { "Haresh","sourabh","vaishnavi","divya","ashish" };
+        System.out.println("Maximum string is: " + comparable(maxString));
 
-        String maxString = comparesion(firstString,secondString , thirdString);
-        System.out.println("Maximum value is:" + maxString);
-        scanner.close();
     }
 }
